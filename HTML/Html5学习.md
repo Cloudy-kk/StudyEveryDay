@@ -215,6 +215,7 @@ justify-content
 - 对于**块级元素**：
 	（1）width和margin实现。`margin: 0 auto`;(子元素包含float：left)
 		css3新特性：fit-content
+
 	```CSS
 	.parent{
 	/*   width: -moz-fit-content;*/
@@ -225,6 +226,7 @@ justify-content
 	```
 	
 	（2）flex布局中的justify-content
+
 	```CSS
 	.parent{
 	    display: flex;
@@ -234,6 +236,7 @@ justify-content
 	
 	（3）css3新特性：transform
 	![](image/image_4.png "")
+
 	```CSS
 	.son{
 	    position:absolute;
@@ -243,6 +246,7 @@ justify-content
 	```
 	
 	（4）绝对定位，负值margin-left
+
 	```CSS
 	.son{
 	    position:absolute;
@@ -256,9 +260,6 @@ justify-content
 ### 垂直居中
 
 - 对于** 行内元素** : line-height 等于父元素高度
-	```CSS
-	
-	```
 	
 - 对于**行内块级元素**：
 	①：若元素是行内块级元素, 基本思想是使用display: inline-block, vertical-align: middle和一个伪元素让内容块处于容器中央.
@@ -270,48 +271,49 @@ justify-content
 	}
 	
 	```
+- （2）**元素高度不定**
+
+	①：为了使用vertical-align, 我们需要设置父元素display:table, 子元素 display:table-cell;vertical-align:middle;
+	②：
+
+	```CSS
+	.parent {
+		display: flex;
+		align-items: center;
+	}
+	```
+
+	③：
+	```CSS
+	.son{
+			position:absolute;
+			top:50%;
+			transform: translate(0,-50%);
+	}
+
+	```
+
+- （3）**元素高度固定**
+	①
+	```CSS
+	.son{
+			position:absolute;
+			top:50%;
+			height:固定;
+			margin-top:-0.5高度;
+	}
+	```
 	
-	（2）**元素高度不定**
-		①：为了使用vertical-align, 我们需要设置父元素display:table, 子元素 display:table-cell;vertical-align:middle;
-		②：
-		```CSS
-		.parent {
-		  display: flex;
-		  align-items: center;
-		}
-		```
-		
-		③：
-		```CSS
-		.son{
-		    position:absolute;
-		    top:50%;
-		    transform: translate(0,-50%);
-		}
-		
-		```
-		
-	（3）**元素高度固定**
-		①
-		```CSS
-		.son{
-		    position:absolute;
-		    top:50%;
-		    height:固定;
-		    margin-top:-0.5高度;
-		}
-		```
-		
-		②：设置父元素相对定位(position:relative), 子元素如下css样式
-		```CSS
-		.son{
-		    position:absolute;
-		    height:固定;
-		    top:0;
-		    bottom:0;
-		    margin:auto 0;
-		}
-		```
+	②：设置父元素相对定位(position:relative), 子元素如下css样式
+	```CSS
+	.son{
+			position:absolute;
+			height:固定;
+			top:0;
+			bottom:0;
+			margin:auto 0;
+	}
+	```
 		
 
 水平居中较为简单, 共提供了8种方法, 一般情况下 text-align:center,marin:0 auto; 足矣
@@ -338,6 +340,8 @@ justify-content
 
 ## 隐藏元素：
 1.`opacity：0`，该元素隐藏起来了，**但不会改变页面布局**，并且，如果该元素已经绑定 一些事件，如click 事件，那么点击该区域，也**能触发**点击事件的
+
 2.`visibility：hidden`，该元素隐藏起来了**，但不会改变页面布局**，但是**不会触发**该元素已 经绑定的事件 ，隐藏对应元素，在文档布局中仍保留原来的空间（重绘）
+
 3.`display：none`，把元素隐藏起来，并且**会改变页面布局**，可以理解成在页面中把该元素。 不显示对应的元素，在文档布局中不再分配空间（**回流+重绘**）
 

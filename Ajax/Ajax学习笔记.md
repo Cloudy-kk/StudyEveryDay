@@ -85,7 +85,7 @@ AJAX的优点：页面无刷新与服务器进行通信，允许根据用户事�
 
 ## AJAX四步骤：
 
-```JavaScript
+```javascript
 const btn = document.querySelect('btn')
 btn.addEventListener('click',function(){
   //创建对象
@@ -162,7 +162,7 @@ btn.addEventListener('click',function(){
 ## 服务端响应JSON数据
 
 1. 服务端：
-	```JavaScript
+	```javascript
 	app.all('/json-server', (request, response) => {
 	    //设置响应头  设置允许跨域
 	      response.setHeader('Access-Control-Allow-Origin', '*');
@@ -214,7 +214,7 @@ IE浏览器会对AJAX请求结果作为一个缓存，当下一次发送请求�
 
 xhr的属性：**` xhr.timeout`**，**`xhr.ontimeout`**，**`xhr.onerror`**
 
-```JavaScript
+```javascript
 const xhr = new XMLHttpRequest();
 //超时设置 2s 设置
 xhr.timeout = 2000;
@@ -238,7 +238,7 @@ xhr.open("GET",'http://127.0.0.1:8000/delay');
 
 abot()方法：取消请求
 
-```JavaScript
+```javascript
 const btns = document.querySelectorAll('button');
 let x = null;//声明为全局变量
 
@@ -273,7 +273,7 @@ x变量是全局变量，才能在不同的函数内部进行操作。
 3. 在收到响应之后（请求完成之后）即readystate===4的时候（不需要状态码为200，因为有可能是一个失败的请求），再将标识变量变成false，表示当前没有发送请求
 	触发时间的时候，判断标识符的值，如果标识符为true，则表示正在发送请求，则取消发送当前请求，创建发送一个新的请求
 
-```JavaScript
+```javascript
 let x=null
 let isSending = false; // 是否正在发送AJAX请求
 
@@ -309,7 +309,7 @@ data是响应体的内容（服务器返回的结果）
 
 request就是AJAX发送的请求的实例对象。（new XMLHttpRequest）
 
-```JavaScript
+```javascript
 axios.defaults.baseURL = 'http://127.0.0.1:8000';
 //发送get请求
 btns[0].onclick = function () {
@@ -401,7 +401,7 @@ btns[2].onclick = function(){
 
 1. 前后端约定好一个函数（例如handle(data) ）
 2. 前端写好该回调函数
-	```JavaScript
+	```javascript
 	//声明 handle 函数
 	function handle(data){
 	    input.style.border = "solid 1px #f00";
@@ -411,7 +411,7 @@ btns[2].onclick = function(){
 	```
 	
 3. 在服务端写好需要使用的数据，并传过来的时候调用约定好的回调函数。
-	```JavaScript
+	```javascript
 	app.all('/jsonp-server',(request, response) => {
 	    // response.send('console.log("hello jsonp")');
 	    const data = {
@@ -427,7 +427,7 @@ btns[2].onclick = function(){
 4. 发送请求之后，浏览器通过解析 服务端传过来的调用函数的代码 （必须是js代码）然后并渲染。
 原生的jsonp
 
-```JavaScript
+```javascript
 //声明 handle 函数
 function handle(data){
     input.style.border = "solid 1px #f00";

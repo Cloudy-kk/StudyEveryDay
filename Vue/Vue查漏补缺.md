@@ -30,7 +30,7 @@ Model层代表数据模型（data），View代表UI组件（模板），ViewMode
 
 给一个对象添加属性
 
-```JavaScript
+```javascript
 Object.defineProperty(obj, prop, descriptor)
 
 obj：必需。目标对象 
@@ -47,7 +47,7 @@ descriptor：必需。目标属性所拥有的特性
 - enumerable：是否可以被枚举（使用for...in或Object.keys()）。设置为true可以被枚举；设置为false，不能被枚举。默认为false。  
 - value：值可以使任意类型的值，默认为undefined  
 - configurable：是否可以删除目标属性或是否可以再次修改属性的特性（writable, configurable, enumerable）。设置为true可以被删除或可以重新设置特性；设置为false，不能被可以被删除或不可以重新设置特性。默认为false。
-	```JavaScript
+	```javascript
 	let person = {}; 
 	Object.defineProperty(person, 'name', {   
 	    writable: true || false,   
@@ -59,7 +59,7 @@ descriptor：必需。目标属性所拥有的特性
 	```
 	
 - 存取器：Getter和Setter
-	```JavaScript
+	```javascript
 	let number = 18
 	Object.defineProperty(person,'age',{
 	  
@@ -110,7 +110,7 @@ set和get，得到值发生了变化，生成虚拟Dom，然后新旧虚拟dom�
 
 ![](image/image_2.png "")
 
-```JavaScript
+```javascript
 let data = {
         name:'尚硅谷',
         address:'北京',
@@ -243,7 +243,7 @@ computed看上去是方法，但是实际上是计算属性，它会根据你所
 
 判断是否为同一类型节点
 
-```JavaScript
+```javascript
 function sameVnode(oldVnode, newVnode) {
   return (
     oldVnode.key === newVnode.key && // key值是否一样
@@ -270,7 +270,7 @@ function sameVnode(oldVnode, newVnode) {
 新旧虚拟节点的子节点对比（**首尾指针法**）
 
 用index做key
-```JavaScript
+```javascript
 <ul>
    <li v-for="(item, index) in list" :key="index">{{ item.title }}</li>
 </ul>
@@ -308,7 +308,7 @@ add() {
 
 #### **$parent,$children** 获取当前组件的父组件和当前组件的子组件
 
-```JavaScript
+```javascript
 methods: {
     changeA() {
       // 获取到子组件A
@@ -318,7 +318,7 @@ methods: {
 ```
 
 
-```JavaScript
+```javascript
 computed:{
     parentVal(){
       return **this.$parent.msg;**
@@ -335,7 +335,7 @@ computed:{
 
 父组件中通过`provide`来提供变量, 然后再子组件中通过`inject`来注入变量。
 
-```JavaScript
+```javascript
 A(B(C))
 //A
 export default {
@@ -377,7 +377,7 @@ export default {
 
 如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如**果用在子组件上，引用就指向组件实例，可以通过实例直接调用组件的方法或访问数据**， 我们看一个`ref` 来访问组件的例子:
 
-```JavaScript
+```javascript
 //父组件
 <template>
   <component-a **ref="comA"**></component-a>
@@ -417,7 +417,7 @@ export default {
 1. **适用于任意组件间通信**。
 2. 在 **Vue.prototype**上创建一个中间量，这个中间量各个组件都可以访问。将某个函数挂载在上面，再在另一个函数中触发，就可以实现组件之间通信
 3. **安装全局事件总线：**
-	```JavaScript
+	```javascript
 	new Vue({
 	  ......
 	  beforeCreate() {
@@ -436,7 +436,7 @@ export default {
 	**VueComponent.prototype.__prpto__==Vue.prototype<br />//这个内置关系：让组件实例对象（vc）可以访问原型上的属性和方法<br />**
 4. 使用事件总线：
 	1. 接收数据：A组件想接收数据，则在A组件中给$bus绑定自定义事件，事件的回调留在A组件自身。
-		```JavaScript
+		```javascript
 		methods(){
 		  demo(data){......}
 		}
@@ -459,7 +459,7 @@ export default {
 通过`window.localStorage.getItem(key)`获取数据 通过`window.localStorage.setItem(key,value)`存储数据
 #### **$attrs与 $listeners**
 
-```JavaScript
+```javascript
 
 ```
 

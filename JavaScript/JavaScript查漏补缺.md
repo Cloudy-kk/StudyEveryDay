@@ -23,7 +23,7 @@
 - 使用上下文对象来调用这个方法，并保存返回结果。
 - 删除刚才新增的属性。
 - 返回结果。
-	```JavaScript
+	```javascript
 	Function.prototype.myCall = function(context) {
 	// 判断调用对象
 	if (typeof this !== "function") {
@@ -53,7 +53,7 @@
 - 使用上下文对象来调用这个方法，并保存返回结果。
 - 删除刚才新增的属性
 - 返回结果
-	```JavaScript
+	```javascript
 	Function.prototype.myApply = function(context) {
 	// 判断调用对象是否为函数
 	if (typeof this !== "function") {
@@ -83,7 +83,7 @@
 - 保存当前函数的引用，获取其余传入参数值。
 - 创建一个函数返回
 - 函数内部使用 apply 来绑定函数调用，需要判断函数作为构造函数的情况，这个时候需要传入当前函数的 this 给 apply 调用，其余情况都传入指定的上下文对象。
-	```JavaScript
+	```javascript
 	Function.prototype.myBind = function(context) {
 	// 判断调用对象是否为函数
 	if (typeof this !== "function") {
@@ -110,12 +110,12 @@
 
 1. **`string、number、boolean、null、undefined、object(function、array)、symbol(ES10 BigInt)`**
 2. `typeof` 主要用来判断数据类型 返回值有`string、boolean、number、function、object、undefined。`
-	```JavaScript
+	```javascript
 	typeof null  // 'object'
 	typeof undefined  // 'undefined'
 	```
 	
-	```JavaScript
+	```javascript
 	null == undefined  // true
 	null === undefined  // false
 	!!null === !!undefined  // true
@@ -131,7 +131,7 @@
 
 ### typeof
 
-```JavaScript
+```javascript
 console.log(typeof 1);               // number
 console.log(typeof true);            // boolean
 console.log(typeof 'mc');            // string
@@ -156,7 +156,7 @@ console.log(typeof undefined);       // undefined
 
 leftVaule instanceof rightVaule（通过比较他们之间的原型对象）即实例对象上面的_proto_指向的原型对象和构造函数prototype属性的原型对象指向的是一个值。
 
-```JavaScript
+```javascript
 nceof
 console.log(1 instanceof Number);                    // false
 console.log(true instanceof Boolean);                // false 
@@ -173,7 +173,7 @@ console.log({} instanceof Object);                   // true
 
 
 
-```JavaScript
+```javascript
 function myInstanceof(left, right) {
     let proto = Object.getPrototypeOf(left);//proto是left的原型对象
     while(true) {
@@ -191,7 +191,7 @@ console.log(myInstanceof('hello',String));
 
 ### Object.prototype.toString.call()
 
-```JavaScript
+```javascript
 var toString = Object.prototype.toString;
 
 console.log(toString.call(1));                      //[object Number]
@@ -225,7 +225,7 @@ ES6 中有明确的规定：如果区块中存在 let 和 const 命令，这个�
 
 这一段会报错的危险区域，有一个专属的名字，叫”暂时性死区“。在我们的 demo 中，以红线为界，上面的区域就是暂时性死区：
 
-```JavaScript
+```javascript
 var me = 'icon';
 
 {
@@ -250,7 +250,7 @@ var me = 'icon';
 
 ## 闭包：
 
-闭包是指有权访问另一个函数作用域中的变量的函数 ——《JavaScript高级程序设计》
+闭包是指有权访问另一个函数作用域中的变量的函数 ——《javascript高级程序设计》
 
 在js中变量的作用域属于函数作用域, 在函数执行完后,作用域就会被清理,内存也会随之被回收,但是由于闭包函数是建立在函数内部的子函数, 由于其可访问上级作用域,即使上级函数执行完, 作用域也不会随之销毁, 这时的子函数(也就是闭包),便拥有了访问上级作用域中变量的权限,即使上级函数执行完后作用域内的值也不会被销毁
 
@@ -267,7 +267,7 @@ var me = 'icon';
 
 **闭包应用场景**
 
-闭包的两个场景，闭包的两大作用：`保存/保护`。 在开发中, 其实我们随处可见闭包的身影, 大部分前端JavaScript 代码都是“事件驱动”的,即一个事件绑定的回调方法; 发送ajax请求成功|失败的回调;setTimeout的延时回调;或者一个函数内部返回另一个匿名函数,这些都是闭包的应用。
+闭包的两个场景，闭包的两大作用：`保存/保护`。 在开发中, 其实我们随处可见闭包的身影, 大部分前端javascript 代码都是“事件驱动”的,即一个事件绑定的回调方法; 发送ajax请求成功|失败的回调;setTimeout的延时回调;或者一个函数内部返回另一个匿名函数,这些都是闭包的应用。
 
 
 
@@ -283,7 +283,7 @@ var me = 'icon';
 
 ### **特点:** 
 
-JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。
+javascript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。
 this指向、new关键字
 
 
@@ -296,10 +296,10 @@ this指向、new关键字
 4. 判断函数的返回值类型，如果是值类型，返回创建的对象。如果是引用类型，就返回这个引用类型的对象。
 
 ## 执行上下文
-执行上下文就是当前 JavaScript 代码被解析和执行时所在环境的抽象概念， JavaScript 中运行任何的代码都是在执行上下文中运行
+执行上下文就是当前 javascript 代码被解析和执行时所在环境的抽象概念， javascript 中运行任何的代码都是在执行上下文中运行
 - 全局执行上下文： 这是默认的、最基础的执行上下文。不在任何函数中的代码都位于全局执行上下文中。它做了两件事：1. 创建一个全局对象，在浏览器中这个全局对象就是 window 对象。2. 将 this 指针指向这个全局对象。一个程序中只能存在一个全局执行上下文。
 - 函数执行上下文： 每次调用函数时，都会为该函数创建一个新的执行上下文。每个函数都拥有自己的执行上下文，但是只有在函数被调用的时候才会被创建。一个程序中可以存在任意数量的函数执行上下文。每当一个新的执行上下文被创建，它都会按照特定的顺序执行一系列步骤，具体过程将在本文后面讨论。
-- Eval 函数执行上下文： 运行在 eval 函数中的代码也获得了自己的执行上下文，但由于 Javascript 开发人员不常用 eval 函数，所以在这里不再讨论
+- Eval 函数执行上下文： 运行在 eval 函数中的代码也获得了自己的执行上下文，但由于 javascript 开发人员不常用 eval 函数，所以在这里不再讨论
 执行上下文的生命周期包括三个阶段：**创建阶段→执行阶段→回收阶段**
 
 ### 1.创建阶段
@@ -307,7 +307,7 @@ this指向、new关键字
 当函数被调用，但未执行任何其内部代码之前，会做以下三件事：
 
 - 创建变量对象：首先初**始化函数的参数arguments，提升函数声明和变量声明**。下文会详细说明。
-- **创建作用域链（Scope Chain）**：在执行期上下文的创建阶段，作用域链是在变量对象之后创建的。作用域链本身包含变量对象。作用域链用于解析变量。当被要求解析变量时，JavaScript 始终从代码嵌套的最内层开始，如果最内层没有找到变量，就会跳转到上一层父作用域中查找，直到找到该变量。
+- **创建作用域链（Scope Chain）**：在执行期上下文的创建阶段，作用域链是在变量对象之后创建的。作用域链本身包含变量对象。作用域链用于解析变量。当被要求解析变量时，javascript 始终从代码嵌套的最内层开始，如果最内层没有找到变量，就会跳转到上一层父作用域中查找，直到找到该变量。
 - **确定this指向**：包括多种情况，下文会详细说明
 
 在一段 JS 脚本执行之前，要先解析代码（所以说 JS 是解释执行的脚本语言），解析的时候会先创建一个全局执行上下文环境，先把代码中即将执行的变量、函数声明都拿出来。变量先暂时赋值为undefined，函数则先声明好可使用。这一步做完了，然后再开始正式执行程序。
@@ -336,7 +336,7 @@ this指向、new关键字
 
 #### 标记清除算法：
 
-该算法假定设置一个叫做**根（root）的对象**（在Javascript里，根是全局对象）。垃圾回收器将**定期从根开始**（在JS中就是全局对象）扫描内存中的对象。**凡是能从根部到达的对象，都是还需要使用的。那些无法由根部出发触及到的对象被标记为不再使用，稍后进行回收**。
+该算法假定设置一个叫做**根（root）的对象**（在javascript里，根是全局对象）。垃圾回收器将**定期从根开始**（在JS中就是全局对象）扫描内存中的对象。**凡是能从根部到达的对象，都是还需要使用的。那些无法由根部出发触及到的对象被标记为不再使用，稍后进行回收**。
 
 1. 变量进入上下文，也可理解为作用域，会加上标记，证明其存在于该上下文；
 2. 将**所有在上下文中的变量以及上下文中被访问引用的变量**标记去掉，表明这些变量活跃有用；
@@ -384,12 +384,9 @@ Chrome 浏览器所使用的 V8 引擎就是采用的分代回收策略。这个
 - `微任务(microtask)`：  
 	语言本身提供的，比如promise.then  
 	then、queueMicrotask(基于then)、mutationObserver(浏览器提供)、messageChannel 、mutationObersve
-	![](image/image_2.png "")
 
 
-
-
-
+![](image/image_2.png "")
 
 
 ## setTimeout、Promise、Async/Await 的区别
@@ -398,7 +395,7 @@ Chrome 浏览器所使用的 V8 引擎就是采用的分代回收策略。这个
 	settimeout的回调函数放到宏任务队列里，等到执行栈清空以后执行。
 - Promise
 	Promise本身是**同步的立即执行函数**， 当在executor中执行resolve或者reject的时候, 此时是异步操作， **会先执行then/catch等，当主栈完成后，才会去调用resolve/reject中存放的方法执行。**
-	```JavaScript
+	```javascript
 	console.log('script start')
 	let promise1 = new Promise(function (resolve) {
 	    console.log('promise1')
@@ -422,8 +419,9 @@ Chrome 浏览器所使用的 V8 引擎就是采用的分代回收策略。这个
 - async/await
 	**async 函数返回一个 Promise 对象**，当函数执行的时候，**一旦遇到 await 就会先返回**，等到触发的异步操作完成，再执行函数体内后面的语句。可以理解为，是让出了线程，**跳出了 async 函数体**。
 	讲的超级好👇
+	
 	[https://juejin.cn/post/6844903734321872910](https://juejin.cn/post/6844903734321872910)
-	```JavaScript
+	```javascript
 	async function async1(){
 	   console.log('async1 start');
 	   await async2();
@@ -474,7 +472,7 @@ Chrome 浏览器所使用的 V8 引擎就是采用的分代回收策略。这个
 
 
 
-```JavaScript
+```javascript
 function debounce(fn,delay){
 //设置一个定时器
   let timer = null
@@ -498,7 +496,7 @@ function debounce(fn,delay){
 
 
 
-```JavaScript
+```javascript
 function throttle(fn,delay){
   //记录第一次执行的时间
   let lasttime=null
@@ -525,7 +523,7 @@ function throttle(fn,delay){
 
 #### 双for循环：
 
-```JavaScript
+```javascript
 for distinct(arr){
   for(let i = 0,len = arr.length;i<len;i++){
     for(let j = i+1;j<len;j++){
@@ -548,7 +546,7 @@ for distinct(arr){
 
 #### Array.filter() 加 indexOf
 
-```JavaScript
+```javascript
 function distinct(a,b){
 //concat():用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组
   let arr = a.concat(b)
@@ -565,7 +563,7 @@ function distinct(a,b){
 
 #### Array.sort() 加一行遍历冒泡(相邻元素去重)
 
-```JavaScript
+```javascript
 function distinct(array){
   var res = []
   var sortedArray = array.concat().sort();
@@ -588,7 +586,7 @@ function distinct(array){
 
 #### ES6 中的 Set 去重
 
-```JavaScript
+```javascript
 function distinct(array) {
 //Array.from():方法对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
    return Array.from(new Set(array));
