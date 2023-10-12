@@ -1,18 +1,21 @@
 
-# config配置对象：
+# config配置对象
+
 1. `url：`'请求地址'
 2. `method：`'请求类型'（get/post）
 3. `baseURL：`'基础url，会将baseURL和url做一个结合'
 4. `transformRequest` 允许在向服务器发送前，修改请求数据  
-	> 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法  
-	> 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream 
+
+ > 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法  
+ > 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
   
   ```
-	transformRequest: [function (data, headers) {  
-		// 对 data 进行任意转换处理  
-		return data;  
-	}],
+ transformRequest: [function (data, headers) {  
+  // 对 data 进行任意转换处理  
+  return data;  
+ }],
   ```  
+  
 5. `transformResponse` 在传递给 then/catch 前，允许修改响应数据  
 
   ```
@@ -21,14 +24,13 @@
       return data;  
     }],
   ```
+
 6. `headers：`{'头信息'}
 7. `params：`{参数:参数值}
 8. .....很多配置信息，看官网：
 [http://axios-js.com/zh-cn/docs/index.html#请求配置](http://axios-js.com/zh-cn/docs/index.html#请求配置)
 
-
-
-# 全局默认值：
+# 全局默认值
 
 在全局中使用
 
@@ -38,8 +40,7 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
-
-# 自定义实例默认值：
+# 自定义实例默认值
 
 ```javascript
 // 创建实例对象
@@ -65,7 +66,6 @@ instance({
 
 ```
 
-
 **响应体**reponse.data之中包含：
 
 `code:`状态码
@@ -76,9 +76,9 @@ instance({
 
 `_proto_:`原型
 
-# 拦截器（函数）：
+# 拦截器（函数）
 
-## 请求拦截器：
+## 请求拦截器
 
 在发送请求之前，对发送的参数进行检查或者其它的操作
 
@@ -94,8 +94,7 @@ axios.interceptors.request.use(function (config) {
 
 ```
 
-
-## 响应拦截器：
+## 响应拦截器
 
 当服务器返回结果的时候，在我们处理结果之前先对结果进行预处理
 
@@ -110,17 +109,12 @@ axios.interceptors.response.use(function (response) {
   });
 ```
 
-
-
-
 > 当有多个拦截器的时候(洋葱模型)
   >请求从外边到里面（最后设置的在最外面），响应是从里面到外面
   >请求拦截器是进入堆栈（先进后出）unshift
   响应拦截器是进入队列（先进先出）push
 
-
-
-# axios取消请求：
+# axios取消请求
 
 axios的配置项cancelTocken用于取消请求中：
 
@@ -131,8 +125,7 @@ axios的配置项cancelTocken用于取消请求中：
   })
 ```
 
-
-## 取消请求：
+## 取消请求
 
 回调+闭包（订阅发布）
 
@@ -150,7 +143,6 @@ axios.get('/user/12345', {
 // cancel the request
 cancel();
 ```
-
 
 所以在`axios`中，我们也会根据配置中是否包含`cancelToken`来取消发送（源码）：
 
@@ -172,11 +164,10 @@ function CancelToken(executor){
 }
 ```
 
-
 - `executor`
-	这是一个双参函数，参数为`resolve和reject`。`Promise`的实现会立即执行`executor`，并传入`resolve `和` reject`函数（`Promise`构造器将会在返回新对象之前`executor`）。当`resolve`和`reject`函数被调用时，它们分别对promise执行`resolve`和`reject`。`executor`通常会触发一些异步运算，一旦运算成功完成，则`resolve`掉这个promise，如果出错则`reject`掉。如果`executor`函数执行时抛出异常，promise状态会变为`rejected`。`executor`的返回值也会被忽略。
+ 这是一个双参函数，参数为`resolve和reject`。`Promise`的实现会立即执行`executor`，并传入`resolve`和`reject`函数（`Promise`构造器将会在返回新对象之前`executor`）。当`resolve`和`reject`函数被调用时，它们分别对promise执行`resolve`和`reject`。`executor`通常会触发一些异步运算，一旦运算成功完成，则`resolve`掉这个promise，如果出错则`reject`掉。如果`executor`函数执行时抛出异常，promise状态会变为`rejected`。`executor`的返回值也会被忽略。
 
-## 取消请求代码解析：
+## 取消请求代码解析
 
 ```javascript
 function CancelToken(executor) {
@@ -206,7 +197,6 @@ function CancelToken(executor) {
 }
 
 ```
-
 
 ![](image/image.png "")
 
@@ -239,7 +229,3 @@ axios({
   cancel=null
 })
 ```
-
-
-
-
