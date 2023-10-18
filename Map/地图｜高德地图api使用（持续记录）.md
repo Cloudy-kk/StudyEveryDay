@@ -11,6 +11,7 @@
     - [没有到高德地图定义的层级 也显示行政区内容](#没有到高德地图定义的层级-也显示行政区内容)
     - [高德地图海量点和marker的区别](#高德地图海量点和marker的区别)
     - [高德地图返回的城市数据与普通直辖市的数据](#高德地图返回的城市数据与普通直辖市的数据)
+    - [高德地图marker得content用 react组件](#高德地图marker得content用-react组件)
 
 ### 根据覆盖物调整地图范围
 
@@ -85,3 +86,22 @@ canva画布尺寸发生变化，导致缓存内容丢失。有关系
 
 1. 高德地图逆地理编码时city返回数组或者空字符串的反序列化的问题
 2. 台湾以及外国区域在返回经纬度不能输数组的方式创建信息，回报错【获取不到经纬度信息】，这个使用需要使用高德地图的`new LngLat()`方法创建点击的时候的经纬度信息
+
+### 高德地图marker得content用 react组件
+
+利用 `ReactDOM.render` 方法渲染一个组件，然后采用document.getElementById(uid)在页面中填充内容
+
+``` react
+ // 设置当前选中item
+  const uid:any = v4();
+  addressMarkerRef.current[index].setContent(`<div id="${uid}"></div>`);
+  ReactDOM.render(<MapLabel
+    checkCity={checkCity}
+    detail={item}
+    planId={planId}
+    branchCompanyId={branchCompanyId}
+    setRefresh={setRefresh}/>, document.getElementById(uid));
+
+```
+
+![Alt text](image.png)
