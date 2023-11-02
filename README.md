@@ -7,7 +7,7 @@
 
 ## EveryDay Record
 
-每天记录一篇文章
+[每天记录一篇文章](./Everyday/README.md)
 
 ## 🍵 前端
 
