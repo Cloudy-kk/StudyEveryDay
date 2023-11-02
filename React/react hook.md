@@ -27,6 +27,7 @@
     - [自定义一个hook](#自定义一个hook)
   - [useMemo/useCallback](#usememousecallback)
   - [useContext](#usecontext)
+  - [use](#use)
 
 ## userState
 
@@ -589,3 +590,7 @@ cityId: number;
 districtId: number；
 }
 ```
+
+## use
+
+use 是一个 React Hook，它可以让你读取类似于 Promise 或 context 的资源的值。
