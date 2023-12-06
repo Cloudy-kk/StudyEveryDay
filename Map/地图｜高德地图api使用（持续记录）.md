@@ -12,6 +12,7 @@
     - [高德地图海量点和marker的区别](#高德地图海量点和marker的区别)
     - [高德地图返回的城市数据与普通直辖市的数据](#高德地图返回的城市数据与普通直辖市的数据)
     - [高德地图marker得content用 react组件](#高德地图marker得content用-react组件)
+  - [高德地图禁用外部点击事件](#高德地图禁用外部点击事件)
 
 ### 根据覆盖物调整地图范围
 
@@ -105,3 +106,35 @@ canva画布尺寸发生变化，导致缓存内容丢失。有关系
 ```
 
 ![Alt text](image.png)
+
+## 高德地图禁用外部点击事件
+
+应用场景：在地图上进行内容绘制或者表单输入的时候，禁用其他内容
+
+```react
+  // 处理绘制商圈中禁止点击其他操作
+  useEffect(() => {
+    const dom:any = document.querySelector(`.${networkMapContainer}`);
+
+    if (isDraw) {
+      // 除地图元素和新增商圈外
+      dom.addEventListener('click', handlePreventdefault);
+    }
+    return () => {
+      dom.removeEventListener('click', handlePreventdefault);
+    };
+  }, [isDraw]);
+
+
+  // 处理绘制商圈中禁止点击其他操作
+  const handlePreventdefault = (e) => {
+    const mapDom:any = document.querySelector(`.${mapCon}`);
+    const addBusinessBtn:any = document.querySelector(`.${addBusiness}`);
+    if (!mapDom.contains(e.target) && !addBusinessBtn.contains(e.target)) {
+      V2Message.warning(`请先完成新增商圈信息填写或删除该商圈`);
+      message.config({ maxCount: 1 });
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+```
